@@ -7,11 +7,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 #from toolz.itertoolz import second
 from mouseSpeed import distance
-from sys import stdin
+import keyboard
 
+#print time when script start
 scriptStartAt = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
 print(scriptStartAt)
-
 
 class Frame:
     def __init__(self, position, time):
@@ -23,7 +23,8 @@ class Frame:
         d = distance(*self.position, *frame.position)
         time_delta = abs(frame.time - self.time)
         return d / time_delta
-    
+    def keyPressEvent(self, event):
+        print(event.text())
 def distance(x1, y1, x2, y2):
     return math.sqrt((x2 - x1)**2 + (y2-y1)**2)
 
@@ -48,14 +49,11 @@ if __name__ == '__main__':
         
         nowTime = datetime.now()
         mouseWasMoveAt = nowTime.strftime('%Y-%m-%d %H:%M:%S')
-        new_frame = get_current_frame()
         
-        
-        
-        if new_frame.speed(last_frame) != 0:
-            
-            #print(get_current_cursor_position())
-            
+        new_frame = get_current_frame() 
+        if keyboard.is_pressed('space') != False:
+            print('was pressed ')
+        if new_frame.speed(last_frame) != 0: 
             print(mouseWasMoveAt)
             last_frame = new_frame
             time.sleep(0.07)
