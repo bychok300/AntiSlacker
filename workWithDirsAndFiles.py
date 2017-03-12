@@ -2,19 +2,78 @@ import sys
 import os
 
 
+#chek os 
 check_os = sys.platform
-
 print('Platform is :',check_os)
 
+#create a folders if os is linux
 if check_os == 'linux':
-    check_dir = os.listdir('/home/')
-    print(check_dir)
-    path_to_home_user = os.path.abspath('/home/' + check_dir[0] + '/')
-    #check_user_dir = os.listdir('/home/' + check_dir[0])
-
-    #print(check_user_dir)
-    print(path_to_home_user)
     
-#     if not os.path.exists('AntiSlacker'):
-#         create_dir = os.mkdir(path_to_home_user  + 'AntiSlacker')
-#         print('Dir was created successfuly')
+    check_dir = os.listdir('/home/')
+    print('User name is : ' + str(check_dir))
+    
+    
+    path_to_home_user = os.path.abspath('/home/' + check_dir[0] )
+    print('full path to home user folder : ' + str(path_to_home_user))
+    
+    #create dir if it does't exist
+    try:
+        if not os.path.exists('AntiSlacker'):
+            create_dir = os.mkdir(path_to_home_user + '/AntiSlacker')
+            print('Dir was created successfuly')
+    except(FileExistsError):
+        print('Folder already exist')   
+    
+    #go to /AntiSlacker dir and create logs folder
+    cd = os.chdir(path_to_home_user + '/AntiSlacker')
+    print('You are in ' + path_to_home_user + '/AntiSlacker')
+    
+    try:
+        if not os.path.exists('AntiSlacker/logs'):
+            create_dir = os.mkdir(path_to_home_user  + '/AntiSlacker/logs')
+            print('Dir was created successfuly')
+    except(FileExistsError):
+        print('Folder already exist')
+# elif check_os == 'windows':
+#     
+#     check_dir = os.listdir('C:\Program\ files')
+#     print('User name is : ' + str(check_dir))
+#     
+#     
+#     path_to_home_user = os.path.abspath('/home/' + check_dir[0] )
+#     print('full path to home user folder : ' + str(path_to_home_user))
+#     
+#     #create dir if it does't exist
+#     try:
+#         if not os.path.exists('AntiSlacker'):
+#             create_dir = os.mkdir(path_to_home_user + '/AntiSlacker')
+#             print('Dir was created successfuly')
+#     except(FileExistsError):
+#         print('Folder already exist')   
+#     
+#     #go to /AntiSlacker dir and create logs folder
+#     cd = os.chdir(path_to_home_user + '/AntiSlacker')
+#     print('You are in ' + path_to_home_user + '/AntiSlacker')
+#     
+#     try:
+#         if not os.path.exists('AntiSlacker/logs'):
+#             create_dir = os.mkdir(path_to_home_user  + '/AntiSlacker/logs')
+#             print('Dir was created successfuly')
+#     except(FileExistsError):
+#         print('Folder already exist')        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
