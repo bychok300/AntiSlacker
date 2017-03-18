@@ -34,7 +34,7 @@ if check_os == 'linux':
             print('Dir was created successfuly')
     except(FileExistsError):
         print('Folder already exist')
-# elif check_os == 'windows':
+# elif check_os == 'win32':
 #     
 #     check_dir = os.listdir('C:\Program\ files')
 #     print('User name is : ' + str(check_dir))
