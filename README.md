@@ -5,7 +5,7 @@ Simple program that handle mouse and keyboard events.<br/>
 
 <code>git clone https://github.com/bychok300/AntiSlacker.git</code>
 
-<code>pip3 -r install requirements.txt</code>
+<code>pip3 install -r requirements.txt</code>
 
 - <code> workWithDirsAndFiles.py </code>He is create folders structure for you.
 
